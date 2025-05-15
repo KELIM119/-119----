@@ -1,0 +1,46 @@
+
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return jsonify({"message": "Hello, World!"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
+
+
+
+@app.route('/data', methods=['POST'])
+def receive_data():
+    data = request.json
+    return jsonify({'received': data})
+
+
+
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+# 기존 엔드포인트
+@app.route('/')
+def home():
+    return jsonify({"message": "Hello, World!"})
+
+# 새로운 엔드포인트 추가
+@app.route('/greet', methods=['GET'])
+def greet():
+    # 요청에서 'name' 파라미터를 가져옵니다.
+    name = request.args.get('name', 'Guest')  # 기본값: 'Guest'
+    return jsonify({"greeting": f"Hello, {name}!"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
+@app.route('/sum', methods=['POST'])
+def calculate_sum():
+    data = request.json  # JSON 데이터 가져오기
+    numbers = data.get('numbers', [])
+    return jsonify({"sum": sum(numbers)})
