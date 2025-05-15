@@ -1,0 +1,10 @@
+
+      cd "C:\big tree_X\robot_project\server"   폴더 까지 변경
+        
+          python app.py     파일 실행
+
+
+
+       cd "C:\bok-hyun"    폴더 까지 변경
+      
+             python ui.py      파일 실행
